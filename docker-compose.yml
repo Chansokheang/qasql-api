@@ -5,7 +5,7 @@ services:
     build: .
     container_name: qasql-api
     ports:
-      - "8000:8000"
+      - "9001:8000"
     volumes:
       - ./data:/data
       - ./qasql_api_output:/app/qasql_api_output
@@ -28,7 +28,7 @@ services:
     image: postgres:15
     container_name: qasql-postgres
     ports:
-      - "5432:5432"
+      - "9002:5432"
     environment:
       - POSTGRES_USER=qasql
       - POSTGRES_PASSWORD=qasql
