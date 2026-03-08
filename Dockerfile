@@ -20,5 +20,5 @@ RUN mkdir -p /data /app/qasql_api_output
 # Expose port
 EXPOSE 9001
 
-# Use uvicorn directly (simpler, single worker)
-CMD ["uvicorn", "app:app", "--host", "0.0.0.0", "--port", "8000", "--workers", "1"]
+# Use gunicorn with uvicorn workers (better for production)
+CMD ["gunicorn", "app:app", "-k", "uvicorn.workers.UvicornWorker", "-w", "4", "-b", "0.0.0.0:8000", "--timeout", "120", "--graceful-timeout", "60", "--keep-alive", "30"]

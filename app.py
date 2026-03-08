@@ -333,17 +333,20 @@ class ProjectMemberUpdate(BaseModel):
 @asynccontextmanager
 async def lifespan(app: FastAPI):
     """Lifespan event handler for startup/shutdown."""
-    # Startup
-    global engine, SessionLocal
-    if engine is None:
-        db_url = os.environ.get(
-            "QASQL_DATABASE_URL",
-            "postgresql+psycopg://postgres:123@localhost:5432/qasql_platform"
-        )
+    # Startup - initialize database for this worker
+    logger.info("Worker starting up...")
+    db_url = os.environ.get(
+        "QASQL_DATABASE_URL",
+        "postgresql+psycopg://postgres:123@localhost:5432/qasql_platform"
+    )
+    try:
         init_database(db_url)
+        logger.info("Worker initialized successfully")
+    except Exception as e:
+        logger.error(f"Worker initialization failed: {e}")
     yield
-    # Shutdown (cleanup if needed)
-    logger.info("Shutting down...")
+    # Shutdown
+    logger.info("Worker shutting down...")
 
 
 app = FastAPI(

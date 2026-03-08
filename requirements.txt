@@ -1,7 +1,7 @@
 # QA-SQL API Requirements
 
-# Core SDK - comment out if causing memory issues
-# qasql>=1.0.4
+# Core SDK
+qasql>=1.0.4
 
 # FastAPI and server
 fastapi>=0.100.0
