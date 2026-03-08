@@ -27,7 +27,7 @@ from contextlib import asynccontextmanager
 from fastapi import FastAPI, HTTPException, Depends, status, Query, Header
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.security import OAuth2PasswordRequestForm, APIKeyHeader, OAuth2PasswordBearer
-from pydantic import BaseModel, Field
+from pydantic import BaseModel, Field, ConfigDict
 from sqlalchemy import create_engine
 from sqlalchemy.orm import Session, sessionmaker
 import uvicorn
@@ -119,17 +119,16 @@ class ProjectCreate(BaseModel):
     llm_model: Optional[str] = None
     llm_api_key: Optional[str] = None
 
-    class Config:
-        json_schema_extra = {
-            "example": {
-                "name": "My Sales Database",
-                "description": "Sales analytics database",
-                "db_type": "sqlite",
-                "db_uri": "sqlite:///./sales.db",
-                "llm_provider": "anthropic",
-                "llm_model": "claude-sonnet-4-5-20250929"
-            }
+    model_config = ConfigDict(json_schema_extra={
+        "example": {
+            "name": "My Sales Database",
+            "description": "Sales analytics database",
+            "db_type": "sqlite",
+            "db_uri": "sqlite:///./sales.db",
+            "llm_provider": "anthropic",
+            "llm_model": "claude-sonnet-4-5-20250929"
         }
+    })
 
 
 class ProjectUpdate(BaseModel):
@@ -153,8 +152,7 @@ class ProjectResponse(BaseModel):
     created_at: datetime
     last_query_at: Optional[datetime]
 
-    class Config:
-        from_attributes = True
+    model_config = ConfigDict(from_attributes=True)
 
 
 class ProjectDetailResponse(ProjectResponse):
@@ -168,13 +166,12 @@ class QueryRequest(BaseModel):
     question: str = Field(..., min_length=1)
     hint: Optional[str] = None
 
-    class Config:
-        json_schema_extra = {
-            "example": {
-                "question": "How many customers do we have?",
-                "hint": None
-            }
+    model_config = ConfigDict(json_schema_extra={
+        "example": {
+            "question": "How many customers do we have?",
+            "hint": None
         }
+    })
 
 
 class QueryResponse(BaseModel):
@@ -189,8 +186,7 @@ class QueryResponse(BaseModel):
     generation_time_ms: float
     created_at: datetime
 
-    class Config:
-        from_attributes = True
+    model_config = ConfigDict(from_attributes=True)
 
 
 class ExecuteRequest(BaseModel):
@@ -237,8 +233,7 @@ class APIKeyResponse(BaseModel):
     created_at: datetime
     expires_at: Optional[datetime]
 
-    class Config:
-        from_attributes = True
+    model_config = ConfigDict(from_attributes=True)
 
 
 # Stats Models
@@ -258,16 +253,15 @@ class ProjectAPIKeyCreate(BaseModel):
     rate_limit_per_hour: Optional[int] = Field(None, ge=1, le=10000)
     expires_days: Optional[int] = Field(None, ge=1, le=365)
 
-    class Config:
-        json_schema_extra = {
-            "example": {
-                "name": "Production Read-Only",
-                "can_query": True,
-                "can_execute": False,
-                "can_view_schema": True,
-                "rate_limit_per_hour": 100
-            }
+    model_config = ConfigDict(json_schema_extra={
+        "example": {
+            "name": "Production Read-Only",
+            "can_query": True,
+            "can_execute": False,
+            "can_view_schema": True,
+            "rate_limit_per_hour": 100
         }
+    })
 
 
 class ProjectAPIKeyResponse(BaseModel):
@@ -283,21 +277,19 @@ class ProjectAPIKeyResponse(BaseModel):
     last_used_at: Optional[datetime]
     expires_at: Optional[datetime]
 
-    class Config:
-        from_attributes = True
+    model_config = ConfigDict(from_attributes=True)
 
 
 class ProjectMemberInvite(BaseModel):
     username_or_email: str = Field(..., min_length=1)
     role: str = Field(default="viewer", pattern="^(viewer|editor|admin)$")
 
-    class Config:
-        json_schema_extra = {
-            "example": {
-                "username_or_email": "colleague@example.com",
-                "role": "editor"
-            }
+    model_config = ConfigDict(json_schema_extra={
+        "example": {
+            "username_or_email": "colleague@example.com",
+            "role": "editor"
         }
+    })
 
 
 class ProjectMemberResponse(BaseModel):
@@ -310,8 +302,7 @@ class ProjectMemberResponse(BaseModel):
     invited_at: datetime
     accepted_at: Optional[datetime]
 
-    class Config:
-        from_attributes = True
+    model_config = ConfigDict(from_attributes=True)
 
 
 class ProjectMemberUpdate(BaseModel):
