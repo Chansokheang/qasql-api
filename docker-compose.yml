@@ -1,0 +1,47 @@
+version: '3.8'
+
+services:
+  qasql-api:
+    build: .
+    container_name: qasql-api
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./data:/data
+      - ./qasql_api_output:/app/qasql_api_output
+    environment:
+      - QASQL_DATABASE_URL=postgresql://qasql:qasql@postgres:5432/qasql_platform
+      - QASQL_SECRET_KEY=${QASQL_SECRET_KEY:-change-this-secret-key}
+      - QASQL_LLM_PROVIDER=ollama
+      - QASQL_LLM_MODEL=llama3.2:3b
+      - QASQL_OLLAMA_URL=http://ollama:11434
+    depends_on:
+      - postgres
+      - ollama
+    restart: unless-stopped
+
+  postgres:
+    image: postgres:15
+    container_name: qasql-postgres
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_USER=qasql
+      - POSTGRES_PASSWORD=qasql
+      - POSTGRES_DB=qasql_platform
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    restart: unless-stopped
+
+  ollama:
+    image: ollama/ollama
+    container_name: qasql-ollama
+    ports:
+      - "11434:11434"
+    volumes:
+      - ollama_data:/root/.ollama
+    restart: unless-stopped
+
+volumes:
+  postgres_data:
+  ollama_data:

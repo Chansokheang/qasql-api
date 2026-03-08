@@ -1,0 +1,1219 @@
+{
+  "tables": {
+    "frpm": {
+      "columns": [
+        {
+          "name": "CDSCode",
+          "type": "TEXT",
+          "nullable": false,
+          "default": null
+        },
+        {
+          "name": "Academic Year",
+          "type": "TEXT",
+          "nullable": true,
+          "default": null,
+          "distinct_values": [
+            "2014-2015"
+          ]
+        },
+        {
+          "name": "County Code",
+          "type": "TEXT",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "District Code",
+          "type": "INTEGER",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "School Code",
+          "type": "TEXT",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "County Name",
+          "type": "TEXT",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "District Name",
+          "type": "TEXT",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "School Name",
+          "type": "TEXT",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "District Type",
+          "type": "TEXT",
+          "nullable": true,
+          "default": null,
+          "distinct_values": [
+            "County Office of Education (COE)",
+            "State Special Schools",
+            "Unified School District",
+            "Elementary School District",
+            "High School District",
+            "State Board of Education",
+            "Non-School Locations",
+            "Statewide Benefit Charter"
+          ]
+        },
+        {
+          "name": "School Type",
+          "type": "TEXT",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "Educational Option Type",
+          "type": "TEXT",
+          "nullable": true,
+          "default": null,
+          "distinct_values": [
+            "Traditional",
+            "Juvenile Court School",
+            "County Community School",
+            "State Special School",
+            "Alternative School of Choice",
+            "Continuation School",
+            "Special Education School",
+            "Community Day School",
+            "Home and Hospital",
+            "Opportunity School",
+            "Youth Authority School",
+            "District Special Education Consortia School"
+          ]
+        },
+        {
+          "name": "NSLP Provision Status",
+          "type": "TEXT",
+          "nullable": true,
+          "default": null,
+          "distinct_values": [
+            "Breakfast Provision 2",
+            "Provision 2",
+            "CEP",
+            "Lunch Provision 2",
+            "Provision 1",
+            "Multiple Provision Types",
+            "Provision 3"
+          ]
+        },
+        {
+          "name": "Charter School (Y/N)",
+          "type": "INTEGER",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "Charter School Number",
+          "type": "TEXT",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "Charter Funding Type",
+          "type": "TEXT",
+          "nullable": true,
+          "default": null,
+          "distinct_values": [
+            "Directly funded",
+            "Locally funded",
+            "Not in CS funding model"
+          ]
+        },
+        {
+          "name": "IRC",
+          "type": "INTEGER",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "Low Grade",
+          "type": "TEXT",
+          "nullable": true,
+          "default": null,
+          "distinct_values": [
+            "K",
+            "9",
+            "1",
+            "P",
+            "6",
+            "10",
+            "7",
+            "3",
+            "5",
+            "Adult",
+            "4",
+            "2",
+            "8",
+            "11",
+            "12"
+          ]
+        },
+        {
+          "name": "High Grade",
+          "type": "TEXT",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "Enrollment (K-12)",
+          "type": "REAL",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "Free Meal Count (K-12)",
+          "type": "REAL",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "Percent (%) Eligible Free (K-12)",
+          "type": "REAL",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "FRPM Count (K-12)",
+          "type": "REAL",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "Percent (%) Eligible FRPM (K-12)",
+          "type": "REAL",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "Enrollment (Ages 5-17)",
+          "type": "REAL",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "Free Meal Count (Ages 5-17)",
+          "type": "REAL",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "Percent (%) Eligible Free (Ages 5-17)",
+          "type": "REAL",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "FRPM Count (Ages 5-17)",
+          "type": "REAL",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "Percent (%) Eligible FRPM (Ages 5-17)",
+          "type": "REAL",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "2013-14 CALPADS Fall 1 Certification Status",
+          "type": "INTEGER",
+          "nullable": true,
+          "default": null
+        }
+      ],
+      "primary_keys": [
+        "CDSCode"
+      ],
+      "foreign_keys": [
+        {
+          "column": "CDSCode",
+          "references_table": "schools",
+          "references_column": "CDSCode"
+        }
+      ],
+      "row_count": 9986,
+      "sample_rows": [
+        [
+          "01100170109835",
+          "2014-2015",
+          "01",
+          10017,
+          "0109835",
+          "Alameda",
+          "Alameda County Office of Education",
+          "FAME Public Charter",
+          "County Office of Education (COE)",
+          "K-12 Schools (Public)",
+          "Traditional",
+          null,
+          1,
+          "0728",
+          "Directly funded",
+          1,
+          "K",
+          "12",
+          1087.0,
+          565.0,
+          0.519779208831647,
+          715.0,
+          0.657773689052438,
+          1070.0,
+          553.0,
+          0.516822429906542,
+          702.0,
+          0.65607476635514,
+          1
+        ],
+        [
+          "01100170112607",
+          "2014-2015",
+          "01",
+          10017,
+          "0112607",
+          "Alameda",
+          "Alameda County Office of Education",
+          "Envision Academy for Arts & Technology",
+          "County Office of Education (COE)",
+          "High Schools (Public)",
+          "Traditional",
+          null,
+          1,
+          "0811",
+          "Directly funded",
+          1,
+          "9",
+          "12",
+          395.0,
+          186.0,
+          0.470886075949367,
+          186.0,
+          0.470886075949367,
+          376.0,
+          182.0,
+          0.484042553191489,
+          182.0,
+          0.484042553191489,
+          1
+        ],
+        [
+          "01100170118489",
+          "2014-2015",
+          "01",
+          10017,
+          "0118489",
+          "Alameda",
+          "Alameda County Office of Education",
+          "Aspire California College Preparatory Academy",
+          "County Office of Education (COE)",
+          "High Schools (Public)",
+          "Traditional",
+          null,
+          1,
+          "1049",
+          "Directly funded",
+          1,
+          "9",
+          "12",
+          244.0,
+          134.0,
+          0.549180327868853,
+          175.0,
+          0.717213114754098,
+          230.0,
+          128.0,
+          0.556521739130435,
+          168.0,
+          0.730434782608696,
+          1
+        ],
+        [
+          "01100170123968",
+          "2014-2015",
+          "01",
+          10017,
+          "0123968",
+          "Alameda",
+          "Alameda County Office of Education",
+          "Community School for Creative Education",
+          "County Office of Education (COE)",
+          "Elementary Schools (Public)",
+          "Traditional",
+          "Breakfast Provision 2",
+          1,
+          "1284",
+          "Directly funded",
+          1,
+          "K",
+          "8",
+          191.0,
+          113.0,
+          0.591623036649215,
+          139.0,
+          0.727748691099476,
+          190.0,
+          113.0,
+          0.594736842105263,
+          139.0,
+          0.731578947368421,
+          1
+        ],
+        [
+          "01100170124172",
+          "2014-2015",
+          "01",
+          10017,
+          "0124172",
+          "Alameda",
+          "Alameda County Office of Education",
+          "Yu Ming Charter",
+          "County Office of Education (COE)",
+          "Elementary Schools (Public)",
+          "Traditional",
+          null,
+          1,
+          "1296",
+          "Directly funded",
+          1,
+          "K",
+          "8",
+          257.0,
+          14.0,
+          0.0544747081712062,
+          21.0,
+          0.0817120622568093,
+          257.0,
+          14.0,
+          0.0544747081712062,
+          21.0,
+          0.0817120622568093,
+          1
+        ]
+      ]
+    },
+    "satscores": {
+      "columns": [
+        {
+          "name": "cds",
+          "type": "TEXT",
+          "nullable": false,
+          "default": null
+        },
+        {
+          "name": "rtype",
+          "type": "TEXT",
+          "nullable": false,
+          "default": null,
+          "distinct_values": [
+            "D",
+            "S"
+          ]
+        },
+        {
+          "name": "sname",
+          "type": "TEXT",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "dname",
+          "type": "TEXT",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "cname",
+          "type": "TEXT",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "enroll12",
+          "type": "INTEGER",
+          "nullable": false,
+          "default": null
+        },
+        {
+          "name": "NumTstTakr",
+          "type": "INTEGER",
+          "nullable": false,
+          "default": null
+        },
+        {
+          "name": "AvgScrRead",
+          "type": "INTEGER",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "AvgScrMath",
+          "type": "INTEGER",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "AvgScrWrite",
+          "type": "INTEGER",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "NumGE1500",
+          "type": "INTEGER",
+          "nullable": true,
+          "default": null
+        }
+      ],
+      "primary_keys": [
+        "cds"
+      ],
+      "foreign_keys": [
+        {
+          "column": "cds",
+          "references_table": "schools",
+          "references_column": "CDSCode"
+        }
+      ],
+      "row_count": 2269,
+      "sample_rows": [
+        [
+          "1100170000000",
+          "D",
+          null,
+          "Alameda County Office of Education",
+          "Alameda",
+          398,
+          88,
+          418,
+          418,
+          417,
+          14
+        ],
+        [
+          "1100170109835",
+          "S",
+          "FAME Public Charter",
+          "Alameda County Office of Education",
+          "Alameda",
+          62,
+          17,
+          503,
+          546,
+          505,
+          9
+        ],
+        [
+          "1100170112607",
+          "S",
+          "Envision Academy for Arts & Technology",
+          "Alameda County Office of Education",
+          "Alameda",
+          75,
+          71,
+          397,
+          387,
+          395,
+          5
+        ],
+        [
+          "1100170118489",
+          "S",
+          "Aspire California College Preparatory Academy",
+          "Alameda County Office of Education",
+          "Alameda",
+          61,
+          0,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          "1611190000000",
+          "D",
+          null,
+          "Alameda Unified",
+          "Alameda",
+          922,
+          544,
+          521,
+          546,
+          519,
+          333
+        ]
+      ]
+    },
+    "schools": {
+      "columns": [
+        {
+          "name": "CDSCode",
+          "type": "TEXT",
+          "nullable": false,
+          "default": null
+        },
+        {
+          "name": "NCESDist",
+          "type": "TEXT",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "NCESSchool",
+          "type": "TEXT",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "StatusType",
+          "type": "TEXT",
+          "nullable": false,
+          "default": null,
+          "distinct_values": [
+            "Active",
+            "Closed",
+            "Merged",
+            "Pending"
+          ]
+        },
+        {
+          "name": "County",
+          "type": "TEXT",
+          "nullable": false,
+          "default": null
+        },
+        {
+          "name": "District",
+          "type": "TEXT",
+          "nullable": false,
+          "default": null
+        },
+        {
+          "name": "School",
+          "type": "TEXT",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "Street",
+          "type": "TEXT",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "StreetAbr",
+          "type": "TEXT",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "City",
+          "type": "TEXT",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "Zip",
+          "type": "TEXT",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "State",
+          "type": "TEXT",
+          "nullable": true,
+          "default": null,
+          "distinct_values": [
+            "CA"
+          ]
+        },
+        {
+          "name": "MailStreet",
+          "type": "TEXT",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "MailStrAbr",
+          "type": "TEXT",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "MailCity",
+          "type": "TEXT",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "MailZip",
+          "type": "TEXT",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "MailState",
+          "type": "TEXT",
+          "nullable": true,
+          "default": null,
+          "distinct_values": [
+            "CA"
+          ]
+        },
+        {
+          "name": "Phone",
+          "type": "TEXT",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "Ext",
+          "type": "TEXT",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "Website",
+          "type": "TEXT",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "OpenDate",
+          "type": "DATE",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "ClosedDate",
+          "type": "DATE",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "Charter",
+          "type": "INTEGER",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "CharterNum",
+          "type": "TEXT",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "FundingType",
+          "type": "TEXT",
+          "nullable": true,
+          "default": null,
+          "distinct_values": [
+            "Directly funded",
+            "Locally funded",
+            "Not in CS funding model"
+          ]
+        },
+        {
+          "name": "DOC",
+          "type": "TEXT",
+          "nullable": false,
+          "default": null,
+          "distinct_values": [
+            "00",
+            "31",
+            "34",
+            "42",
+            "54",
+            "56",
+            "52",
+            "58",
+            "98",
+            "02",
+            "99",
+            "03"
+          ]
+        },
+        {
+          "name": "DOCType",
+          "type": "TEXT",
+          "nullable": false,
+          "default": null,
+          "distinct_values": [
+            "County Office of Education (COE)",
+            "State Special Schools",
+            "Non-School Locations",
+            "Joint Powers Authority (JPA)",
+            "Unified School District",
+            "High School District",
+            "Elementary School District",
+            "Community College District",
+            "Regional Occupation Center/Program (ROC/P)",
+            "State Board of Education",
+            "Administration Only",
+            "Statewide Benefit Charter"
+          ]
+        },
+        {
+          "name": "SOC",
+          "type": "TEXT",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "SOCType",
+          "type": "TEXT",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "EdOpsCode",
+          "type": "TEXT",
+          "nullable": true,
+          "default": null,
+          "distinct_values": [
+            "TRAD",
+            "JUV",
+            "COMM",
+            "OPP",
+            "SPEC",
+            "SSS",
+            "ALTSOC",
+            "CON",
+            "COMMDAY",
+            "HOMHOS",
+            "YTH",
+            "ROP",
+            "SPECON"
+          ]
+        },
+        {
+          "name": "EdOpsName",
+          "type": "TEXT",
+          "nullable": true,
+          "default": null,
+          "distinct_values": [
+            "Traditional",
+            "Juvenile Court School",
+            "County Community School",
+            "Opportunity School",
+            "Special Education School",
+            "State Special School",
+            "Alternative School of Choice",
+            "Continuation School",
+            "Community Day School",
+            "Home and Hospital",
+            "Youth Authority School",
+            "ROP",
+            "District Special Education Consortia School"
+          ]
+        },
+        {
+          "name": "EILCode",
+          "type": "TEXT",
+          "nullable": true,
+          "default": null,
+          "distinct_values": [
+            "ELEMHIGH",
+            "HS",
+            "ELEM",
+            "UG",
+            "INTMIDJR",
+            "PS",
+            "A"
+          ]
+        },
+        {
+          "name": "EILName",
+          "type": "TEXT",
+          "nullable": true,
+          "default": null,
+          "distinct_values": [
+            "Elementary-High Combination",
+            "High School",
+            "Elementary",
+            "Ungraded",
+            "Intermediate/Middle/Junior High",
+            "Preschool",
+            "Adult"
+          ]
+        },
+        {
+          "name": "GSoffered",
+          "type": "TEXT",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "GSserved",
+          "type": "TEXT",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "Virtual",
+          "type": "TEXT",
+          "nullable": true,
+          "default": null,
+          "distinct_values": [
+            "P",
+            "N",
+            "F"
+          ]
+        },
+        {
+          "name": "Magnet",
+          "type": "INTEGER",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "Latitude",
+          "type": "REAL",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "Longitude",
+          "type": "REAL",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "AdmFName1",
+          "type": "TEXT",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "AdmLName1",
+          "type": "TEXT",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "AdmEmail1",
+          "type": "TEXT",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "AdmFName2",
+          "type": "TEXT",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "AdmLName2",
+          "type": "TEXT",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "AdmEmail2",
+          "type": "TEXT",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "AdmFName3",
+          "type": "TEXT",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "AdmLName3",
+          "type": "TEXT",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "AdmEmail3",
+          "type": "TEXT",
+          "nullable": true,
+          "default": null
+        },
+        {
+          "name": "LastUpdate",
+          "type": "DATE",
+          "nullable": false,
+          "default": null
+        }
+      ],
+      "primary_keys": [
+        "CDSCode"
+      ],
+      "foreign_keys": [],
+      "row_count": 17686,
+      "sample_rows": [
+        [
+          "01100170000000",
+          "0691051",
+          null,
+          "Active",
+          "Alameda",
+          "Alameda County Office of Education",
+          null,
+          "313 West Winton Avenue",
+          "313 West Winton Ave.",
+          "Hayward",
+          "94544-1136",
+          "CA",
+          "313 West Winton Avenue",
+          "313 West Winton Ave.",
+          "Hayward",
+          "94544-1136",
+          "CA",
+          "(510) 887-0152",
+          null,
+          "www.acoe.org",
+          null,
+          null,
+          null,
+          null,
+          null,
+          "00",
+          "County Office of Education (COE)",
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          37.658212,
+          -122.09713,
+          "L Karen",
+          "Monroe",
+          "lkmonroe@acoe.org",
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          "2015-06-23"
+        ],
+        [
+          "01100170109835",
+          "0691051",
+          "10546",
+          "Closed",
+          "Alameda",
+          "Alameda County Office of Education",
+          "FAME Public Charter",
+          "39899 Balentine Drive, Suite 335",
+          "39899 Balentine Dr., Ste. 335",
+          "Newark",
+          "94560-5359",
+          "CA",
+          "39899 Balentine Drive, Suite 335",
+          "39899 Balentine Dr., Ste. 335",
+          "Newark",
+          "94560-5359",
+          "CA",
+          null,
+          null,
+          null,
+          "2005-08-29",
+          "2015-07-31",
+          1,
+          "0728",
+          "Directly funded",
+          "00",
+          "County Office of Education (COE)",
+          "65",
+          "K-12 Schools (Public)",
+          "TRAD",
+          "Traditional",
+          "ELEMHIGH",
+          "Elementary-High Combination",
+          "K-12",
+          "K-12",
+          "P",
+          0,
+          37.521436,
+          -121.99391,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          "2015-09-01"
+        ],
+        [
+          "01100170112607",
+          "0691051",
+          "10947",
+          "Active",
+          "Alameda",
+          "Alameda County Office of Education",
+          "Envision Academy for Arts & Technology",
+          "1515 Webster Street",
+          "1515 Webster St.",
+          "Oakland",
+          "94612-3355",
+          "CA",
+          "1515 Webster Street",
+          "1515 Webster St.",
+          "Oakland",
+          "94612",
+          "CA",
+          "(510) 596-8901",
+          null,
+          "www.envisionacademy.org/",
+          "2006-08-28",
+          null,
+          1,
+          "0811",
+          "Directly funded",
+          "00",
+          "County Office of Education (COE)",
+          "66",
+          "High Schools (Public)",
+          "TRAD",
+          "Traditional",
+          "HS",
+          "High School",
+          "9-12",
+          "9-12",
+          "N",
+          0,
+          37.80452,
+          -122.26815,
+          "Laura",
+          "Robell",
+          "laura@envisionacademy.org",
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          "2015-06-18"
+        ],
+        [
+          "01100170118489",
+          "0691051",
+          "12283",
+          "Closed",
+          "Alameda",
+          "Alameda County Office of Education",
+          "Aspire California College Preparatory Academy",
+          "2125 Jefferson Avenue",
+          "2125 Jefferson Ave.",
+          "Berkeley",
+          "94703-1414",
+          "CA",
+          "1001 22nd Avenue, Suite 100",
+          "1001 22nd Ave., Ste. 100",
+          "Oakland",
+          "94606",
+          "CA",
+          null,
+          null,
+          "www.aspirepublicschools.org",
+          "2008-08-21",
+          "2015-06-30",
+          1,
+          "1049",
+          "Directly funded",
+          "00",
+          "County Office of Education (COE)",
+          "66",
+          "High Schools (Public)",
+          "TRAD",
+          "Traditional",
+          "HS",
+          "High School",
+          "9-12",
+          "9-12",
+          "N",
+          0,
+          37.868991,
+          -122.27844,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          "2015-07-01"
+        ],
+        [
+          "01100170123968",
+          "0691051",
+          "12844",
+          "Active",
+          "Alameda",
+          "Alameda County Office of Education",
+          "Community School for Creative Education",
+          "2111 International Boulevard",
+          "2111 International Blvd.",
+          "Oakland",
+          "94606-4903",
+          "CA",
+          "2111 International Boulevard",
+          "2111 International Blvd.",
+          "Oakland",
+          "94606-4903",
+          "CA",
+          "(510) 686-4131",
+          null,
+          "www.communityschoolforcreativeeducation.org",
+          "2011-08-22",
+          null,
+          1,
+          "1284",
+          "Directly funded",
+          "00",
+          "County Office of Education (COE)",
+          "60",
+          "Elementary Schools (Public)",
+          "TRAD",
+          "Traditional",
+          "ELEM",
+          "Elementary",
+          "K-8",
+          "K-7",
+          "N",
+          0,
+          37.784648,
+          -122.23863,
+          "Clifford",
+          "Thompson",
+          "cliffordt@communityschoolforcreativeeducation.org",
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          "2016-07-18"
+        ]
+      ]
+    }
+  },
+  "database": "california_schools"
+}
