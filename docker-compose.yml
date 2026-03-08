@@ -10,7 +10,7 @@ services:
       - ./data:/data
       - ./qasql_api_output:/app/qasql_api_output
     environment:
-      - QASQL_DATABASE_URL=postgresql://qasql:qasql@postgres:5432/qasql_platform
+      - QASQL_DATABASE_URL=postgresql+psycopg://qasql:qasql@postgres:5432/qasql_platform
       - QASQL_SECRET_KEY=${QASQL_SECRET_KEY:-change-this-secret-key}
       - QASQL_LLM_PROVIDER=anthropic
       - QASQL_LLM_MODEL=claude-sonnet-4-5-20250929
