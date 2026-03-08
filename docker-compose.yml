@@ -17,14 +17,16 @@ services:
       - ANTHROPIC_API_KEY=${ANTHROPIC_API_KEY}
       # Set this if behind HTTPS reverse proxy (e.g., /api or leave empty)
       - API_ROOT_PATH=${API_ROOT_PATH:-}
-      # Ollama commented out - using Anthropic SDK by default
-      # - QASQL_LLM_PROVIDER=ollama
-      # - QASQL_LLM_MODEL=llama3.2:3b
-      # - QASQL_OLLAMA_URL=http://ollama:11434
     depends_on:
-      - postgres
-      # - ollama  # Commented out
-    restart: unless-stopped
+      postgres:
+        condition: service_healthy
+    restart: always
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/api/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 10s
 
   postgres:
     image: postgres:15
@@ -38,6 +40,11 @@ services:
     volumes:
       - postgres_data:/var/lib/postgresql/data
     restart: unless-stopped
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U qasql -d qasql_platform"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
 
   # Ollama service commented out - using Anthropic SDK by default
   # ollama:
