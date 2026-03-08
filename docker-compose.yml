@@ -12,12 +12,16 @@ services:
     environment:
       - QASQL_DATABASE_URL=postgresql://qasql:qasql@postgres:5432/qasql_platform
       - QASQL_SECRET_KEY=${QASQL_SECRET_KEY:-change-this-secret-key}
-      - QASQL_LLM_PROVIDER=ollama
-      - QASQL_LLM_MODEL=llama3.2:3b
-      - QASQL_OLLAMA_URL=http://ollama:11434
+      - QASQL_LLM_PROVIDER=anthropic
+      - QASQL_LLM_MODEL=claude-sonnet-4-5-20250929
+      - ANTHROPIC_API_KEY=${ANTHROPIC_API_KEY}
+      # Ollama commented out - using Anthropic SDK by default
+      # - QASQL_LLM_PROVIDER=ollama
+      # - QASQL_LLM_MODEL=llama3.2:3b
+      # - QASQL_OLLAMA_URL=http://ollama:11434
     depends_on:
       - postgres
-      - ollama
+      # - ollama  # Commented out
     restart: unless-stopped
 
   postgres:
@@ -33,15 +37,16 @@ services:
       - postgres_data:/var/lib/postgresql/data
     restart: unless-stopped
 
-  ollama:
-    image: ollama/ollama
-    container_name: qasql-ollama
-    ports:
-      - "11434:11434"
-    volumes:
-      - ollama_data:/root/.ollama
-    restart: unless-stopped
+  # Ollama service commented out - using Anthropic SDK by default
+  # ollama:
+  #   image: ollama/ollama
+  #   container_name: qasql-ollama
+  #   ports:
+  #     - "11434:11434"
+  #   volumes:
+  #     - ollama_data:/root/.ollama
+  #   restart: unless-stopped
 
 volumes:
   postgres_data:
-  ollama_data:
+  # ollama_data:  # Commented out

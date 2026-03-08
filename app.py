@@ -115,7 +115,7 @@ class ProjectCreate(BaseModel):
     description: Optional[str] = None
     db_type: str = Field(..., pattern="^(sqlite|postgresql)$")
     db_uri: str = Field(..., min_length=1)
-    llm_provider: str = Field(default="anthropic", pattern="^(ollama|anthropic|openai)$")
+    llm_provider: str = Field(default="anthropic", pattern="^(anthropic|openai)$")  # ollama commented out
     llm_model: Optional[str] = None
     llm_api_key: Optional[str] = None
 
@@ -780,7 +780,7 @@ async def create_project(
         # Set default model based on provider (SDK default: anthropic/claude-sonnet-4-5-20250929)
         llm_model = project_data.llm_model
         if not llm_model:
-            defaults = {"anthropic": "claude-sonnet-4-5-20250929", "openai": "gpt-4o", "ollama": "llama3.2:3b"}
+            defaults = {"anthropic": "claude-sonnet-4-5-20250929", "openai": "gpt-4o"}  # ollama commented out
             llm_model = defaults.get(project_data.llm_provider, "claude-sonnet-4-5-20250929")
 
         project = Project(
