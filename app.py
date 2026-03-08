@@ -371,13 +371,14 @@ Or use API key with `X-API-Key: <key>` header.
     root_path=os.environ.get("API_ROOT_PATH", ""),
 )
 
-# CORS
+# CORS - allow_credentials must be False when using allow_origins=["*"]
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["*"],
-    allow_credentials=True,
+    allow_credentials=False,
     allow_methods=["*"],
     allow_headers=["*"],
+    expose_headers=["*"],
 )
 
 # Engine cache for projects
