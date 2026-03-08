@@ -366,6 +366,9 @@ Or use API key with `X-API-Key: <key>` header.
     docs_url="/docs",
     redoc_url="/redoc",
     lifespan=lifespan,
+    # Fix for reverse proxy / HTTPS
+    swagger_ui_parameters={"persistAuthorization": True},
+    root_path=os.environ.get("API_ROOT_PATH", ""),
 )
 
 # CORS
