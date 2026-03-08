@@ -18,7 +18,7 @@ COPY auth.py .
 RUN mkdir -p /data /app/qasql_api_output
 
 # Expose port
-EXPOSE 8000
+EXPOSE 9001
 
-# Use uvicorn directly with better settings for stability
-CMD ["uvicorn", "app:app", "--host", "0.0.0.0", "--port", "8000", "--timeout-keep-alive", "30", "--limit-concurrency", "100"]
+# Use uvicorn directly (simpler, single worker)
+CMD ["uvicorn", "app:app", "--host", "0.0.0.0", "--port", "8000", "--workers", "1"]

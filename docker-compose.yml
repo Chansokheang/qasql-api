@@ -15,18 +15,17 @@ services:
       - QASQL_LLM_PROVIDER=anthropic
       - QASQL_LLM_MODEL=claude-sonnet-4-5-20250929
       - ANTHROPIC_API_KEY=${ANTHROPIC_API_KEY}
-      # Set this if behind HTTPS reverse proxy (e.g., /api or leave empty)
       - API_ROOT_PATH=${API_ROOT_PATH:-}
     depends_on:
       postgres:
         condition: service_healthy
     restart: always
-    healthcheck:
-      test: ["CMD", "curl", "-f", "http://localhost:8000/api/health"]
-      interval: 30s
-      timeout: 10s
-      retries: 3
-      start_period: 10s
+    deploy:
+      resources:
+        limits:
+          memory: 1G
+        reservations:
+          memory: 512M
 
   postgres:
     image: postgres:15

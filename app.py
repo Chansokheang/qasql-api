@@ -35,7 +35,24 @@ import uvicorn
 # Add parent directory to path for qasql import
 sys.path.insert(0, str(Path(__file__).parent.parent / "qasql-sdk"))
 
-from qasql import QASQLEngine, __version__
+# Lazy import qasql to avoid startup issues
+QASQLEngine = None
+__version__ = "1.0.4"  # Default version
+QASQL_AVAILABLE = False
+
+def get_qasql_engine():
+    """Lazy load QASQLEngine."""
+    global QASQLEngine, QASQL_AVAILABLE
+    if QASQLEngine is None:
+        try:
+            from qasql import QASQLEngine as _QASQLEngine
+            QASQLEngine = _QASQLEngine
+            QASQL_AVAILABLE = True
+        except ImportError:
+            logger.warning("qasql SDK not installed - SQL generation disabled")
+            QASQL_AVAILABLE = False
+            return None
+    return QASQLEngine
 
 from models import Base, User, Project, QueryHistory, APIKey, ProjectAPIKey, ProjectMember, create_database
 from auth import (
@@ -422,10 +439,15 @@ def get_current_user_dep(
     raise credentials_exception
 
 
-def get_project_engine(project: Project) -> QASQLEngine:
+def get_project_engine(project: Project):
     """Get or create QASQLEngine for a project."""
     if project.id in _engine_cache:
         return _engine_cache[project.id]
+
+    # Lazy load QASQLEngine
+    Engine = get_qasql_engine()
+    if Engine is None:
+        return None
 
     # Set API key in environment if needed
     if project.llm_api_key:
@@ -434,7 +456,7 @@ def get_project_engine(project: Project) -> QASQLEngine:
         elif project.llm_provider == "openai":
             os.environ["OPENAI_API_KEY"] = project.llm_api_key
 
-    engine = QASQLEngine(
+    engine = Engine(
         db_uri=project.db_uri,
         llm_provider=project.llm_provider,
         llm_model=project.llm_model,
